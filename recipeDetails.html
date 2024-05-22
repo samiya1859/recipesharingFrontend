@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Sharing Website</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="resDetails.css">
+
+
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+    rel="stylesheet"/>
+
+    <link rel="stylesheet"
+  href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+  <link href="https://cdn.jsdelivr.net/npm/swiffy-slider@1.6.0/dist/css/swiffy-slider.min.css" rel="stylesheet" crossorigin="anonymous">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+</head>
+<body>
+<!-- header/navbar -->
+    <header >
+        <nav class="navbar navbar-expand-lg" style="background: rgb(2, 56, 56);">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="index.html"><img style="width: 90px;margin-left: 40px;" src="images/logo.png" alt="logo"></a>
+              <button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon "></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ml-5">
+                  <li class="nav-item">
+                    <a class="nav-link active text-light" aria-current="page" href="index.html">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link text-light" href="about.html">About Us</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link text-light" href="contact.html">Contact</a>
+                  </li>
+                </ul>
+                <div class="icons" style="margin-right: 50px;">
+                    <a id="profile" href="profile.html"><i class="ri-user-fill"></i></a>
+                    <a id="logout" href="#"><i class="ri-logout-circle-r-line"></i></a>
+                    <a id="login" href="login.html"><i class="ri-logout-circle-line"></i></a>
+                </div>
+              </div>
+            </div>
+          </nav>
+          
+    </header>
+
+<!-- recipe details -->
+<section >
+    <div id="recipe-details" class="recipe-details">
+        
+    </div>
+
+    <!-- reviews -->
+    <div class="all-comment p-5">
+        <br>
+        <h3>See What are people saying about this recipe</h3>
+        <br>
+        <hr>
+        <div class="swiffy-slider slider-item-show3 slider-nav-dark slider-nav-visible slider-nav-outside slider-item-snapstart my-3 slider-nav-sm my-xl-5 slider-indicators-square slider-indicators-outside slider-indicators-dark slider-nav-animation-slideup slider-nav-animation slider-item-first-visible">
+            <div id="slide-coment" class="slider-container">
+                <div class="slide-visible">
+                    
+                       
+                </div>
+                
+            </div>
+        
+            <button type="button" class="slider-nav" aria-label="Go left"></button>
+            <button type="button" class="slider-nav slider-nav-next" aria-label="Go left"></button>
+        
+            <div class="slider-indicators" style="justify-content:right;margin-left: 3rem;">
+                <button class="active" aria-label="Go to slide"></button>
+                <button aria-label="Go to slide" class=""></button>
+                <button aria-label="Go to slide" class=""></button>
+                <button aria-label="Go to slide" class=""></button>
+            </div>
+        
+        </div>
+        <br><hr>
+    </div>
+
+    <div class="own-comments">
+        <p class="d-flex gap-2"> <span> get your own  </span> <a class="com-btn" href="#">Comments</a></p><br><br>
+        <div id="Your_comments" class="all-coms">
+            <div class="card">
+                
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- comment form section -->
+<section>
+    <div class="comment-sect p-5">
+        <h3>Add your comment on this recipe</h3>
+        <div class="comment-form">
+            <form id="comment-form" onsubmit="PostComment(event)" action="">
+                <input type="number" name="" id="recipeId" placeholder="Enter recipe id from top">
+                <input id="comment" type="text" placeholder="Write about this recipe">
+        <input id="datetime" type="datetime-local" name="datetime" required>
+                
+                    <select id="rating" name="rating" required>
+                        <option value="⭐">⭐</option>
+                        <option value="⭐⭐">⭐⭐</option>
+                        <option value="⭐⭐⭐">⭐⭐⭐</option>
+                        <option value="⭐⭐⭐⭐">⭐⭐⭐⭐</option>
+                        <option value="⭐⭐⭐⭐⭐">⭐⭐⭐⭐⭐</option>
+                    </select>
+                <button type="submit" class="btn btn-success">Post Comment</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+
+ <!-- footer design -->
+ <footer>
+    <div class="footer " style="background: rgb(2, 56, 56);">
+        <div class="row d-flex">
+            <div class="col-md-4">
+                <img src="images/logo.png" alt="logo">
+            </div>
+            <div class="col-md-4">
+                <h5>Get Conneted with us</h5>
+                <div class="links">
+                <a href="#"><i class="ri-facebook-circle-line">  http://asfv.facebook.com</i></a><br>
+                <a href="#"><i class="ri-instagram-line">  http://asfv.instagram.com</i> </a><br>
+                <a href="#"><i class="ri-twitter-line">  http://asfv.twitter.com</i> </a><br>
+                <a href="#"><i class="ri-mail-line">  plate@gmail.com</i></a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <h5>Our Services</h5>
+                <span>Get free recipes</span><br>
+                <span>Get free recipes</span><br>
+                <span>Get free recipes</span><br>
+                <span>Get free recipes</span>
+            </div>
+        </div>
+        <hr style="color: azure;">
+        <div class="copy-right text-light">
+            <span><i class="ri-copyright-line"></i> by Plate & Pallete</span>
+            
+        </div>
+    </div>
+</footer>
+
+
+<!-- script tags -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiffy-slider@1.6.0/dist/js/swiffy-slider.min.js" crossorigin="anonymous" defer></script>
+<script src="auth.js"></script>
+<script src="recipedetails.js"></script>
+
+</body>
+</html>

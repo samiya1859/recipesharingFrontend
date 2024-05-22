@@ -1,0 +1,178 @@
+.recipe-details{
+    background: url('images/woodenbg.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: auto;
+}
+
+.recipe-img img{
+    animation-name: scalingimg;
+    animation-duration: 5s;
+    animation-iteration-count:infinite ;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    margin-top: 40px;
+}
+@keyframes scalingimg{
+    0% {
+        transform: scale(0.5);
+    }
+    50% {
+        transform: scale(0.9);
+    }
+    100% {
+        transform: scale(0.5);
+    }
+}
+
+.recipe-text{
+    background: #331e11;
+    padding-top: 40px;
+    color: white;
+    padding: 40px;
+    border-radius: 20px;
+}
+.slide-visible{
+    transition: all .4s ease;
+}
+
+.slide-visible{
+    padding: 20px;
+    border: none;
+    transition: all .4s ease;
+}
+.slide-visible:hover{
+    border:1px solid #331e11;
+    border-radius: 10px;
+    transform: scale(0.9);
+}
+.own-comments{
+    padding: 40px;
+}
+.own-comments p{
+font-size: 24px;
+font-weight: 600;
+transition: all .4s ease;
+}
+.own-comments p span{
+    color: gray;
+}
+.com-btn{
+    text-decoration: none;
+    background: transparent;
+    border: none;
+    color: #331e11;
+    font-weight: bolder;
+    transition: all .4s ease;
+}
+
+
+.comment-form{
+    padding: 20px;
+    text-align: center;
+}
+.comment-form form{
+    width: 70%;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.comment-form form input{
+    border: none;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px 1px black;
+    padding: 30px 20px;
+    margin-bottom: 20px;
+}
+
+.all-coms{
+    padding: 20px;
+    display: grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,auto));;
+}
+.all-coms .card{
+    background: #331e11;
+    padding: 20px;
+    color: wheat;
+    border: none;
+    transition: all .4s ease;
+}
+.all-coms .card:hover{
+   transform: scale(0.8);
+}
+.com-buttons a{
+text-decoration: none;
+background: transparent;
+border: 1px solid wheat;
+color: wheat;
+transition: all .4s ease;
+}
+.com-buttons a:hover{
+    background: darkorange;
+    color: #331e11;
+    letter-spacing: 1px;
+}
+
+/* profile page */
+.profile{
+    background: url('images/profilebg.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 60vh;
+}
+.profile-texts{
+    width: 60%;
+    padding: 70px;
+    color: white;
+    gap: 20px;
+}
+.profile-texts h1{
+    font-weight: bolder;
+    font-family:cursive;
+    font-size: 48px;
+}
+.profile-texts h2{
+    font-weight: bolder;
+    font-family:cursive;
+    font-size: 38px;
+}
+.profile-texts h3{
+    font-weight: bolder;
+    font-family:cursive;
+    font-size: 25px;
+}
+
+.buttons a{
+    text-decoration: none;
+    padding: 7px 10px;
+    border: none;
+    color: white;
+}
+.buttons .edit{
+    background: darkorange;
+}
+.buttons .delete{
+    background: darkred;
+}
+
+/* adding recipe */
+.recipe-form{
+    padding: 40px;
+    text-align: center;
+}
+.recipe-form form{
+    width: 70%;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.recipe-form form input{
+    border: none;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px 1px black;
+    padding: 30px 20px;
+    margin-bottom: 10px;
+}
