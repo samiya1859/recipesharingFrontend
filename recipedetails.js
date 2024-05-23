@@ -122,7 +122,7 @@ const PostComment = async (event) => {
             rating
         };
     
-        fetch(`http://127.0.0.1:8000/recipe/comment/`, {
+        fetch(`https://recipesharingbackend-dpiy.onrender.com/recipe/comment/`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(commentInfo),
@@ -152,7 +152,7 @@ document.getElementById('comment-form').addEventListener('submit', PostComment);
 
 const isReviewed = async (recipeId, userId) => {
     try {
-        const response = await fetch(`http://127.0.0.1:8000/recipe/comment/?commentor=${userId}&recipe=${recipeId}`, {
+        const response = await fetch(`https://recipesharingbackend-dpiy.onrender.com/recipe/comment/?commentor=${userId}&recipe=${recipeId}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -217,7 +217,7 @@ function deletecomment(commentId) {
     
         // If the user confirms deletion, send a DELETE request to the server
         if (confirmation) {
-            fetch(`http://127.0.0.1:8000/recipe/comment/${commentId}`, {
+            fetch(`https://recipesharingbackend-dpiy.onrender.com/recipe/comment/${commentId}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
@@ -253,14 +253,14 @@ function deletecomment(commentId) {
 const getparams = () => {
     const params = new URLSearchParams(window.location.search).get("recipeId");
     console.log(params);
-    fetch(`http://127.0.0.1:8000/recipe/list/${params}`)
+    fetch(`https://recipesharingbackend-dpiy.onrender.com/recipe/list/${params}`)
     .then((res) => res.json())
     .then((data) => {
         console.log(data)
         recipeDetails(data)
     })
 
-    fetch(`http://127.0.0.1:8000/recipe/comment/?recipe=${params}`)
+    fetch(`https://recipesharingbackend-dpiy.onrender.com/recipe/comment/?recipe=${params}`)
     .then((res) => res.json())
     .then((data) => {
         console.log(data);
@@ -273,7 +273,7 @@ const getparams = () => {
     
     const user_id = getUserId()
     if(user_id){
-        fetch(`http://127.0.0.1:8000/recipe/comment/?commentor=${user_id}&recipe=${params}`)
+        fetch(`https://recipesharingbackend-dpiy.onrender.com/recipe/comment/?commentor=${user_id}&recipe=${params}`)
         .then((res) => res.json())
         .then((data) => {
             console.log(data);

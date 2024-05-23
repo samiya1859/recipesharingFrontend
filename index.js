@@ -1,6 +1,6 @@
 // loading all categories
 const loadCategories = () => {
-    fetch('http://127.0.0.1:8000/recipe/category/')
+    fetch('https://recipesharingbackend-dpiy.onrender.com/recipe/category/')
         .then((res) => res.json())
         .then((data) => {
             console.log('API response:', data);
@@ -43,7 +43,7 @@ loadCategories();
 
 const loadAllRecipe = (search) => {
     console.log(search);
-    fetch(`http://127.0.0.1:8000/recipe/list/?search=${search ? search : ""}`)
+    fetch(`https://recipesharingbackend-dpiy.onrender.com/recipe/list/?search=${search ? search : ""}`)
         .then((res) => res.json())
         .then((data) => {
             console.log('API response:', data);

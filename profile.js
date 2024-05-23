@@ -35,7 +35,7 @@ function getFirst20Words(text) {
 const loadUserInfo = () => {
     const user = getUserId();
     if(user){
-        fetch(`http://127.0.0.1:8000/user/list/${user}`)
+        fetch(`https://recipesharingbackend-dpiy.onrender.com/user/list/${user}`)
         .then((res)=> res.json())
         .then((data) => {
             console.log(data);
@@ -68,7 +68,7 @@ const PostRecipe = (event) => {
         formData.append('created', document.getElementById('datetime').value);
     
     
-        fetch('http://127.0.0.1:8000/recipe/list/', {
+        fetch('https://recipesharingbackend-dpiy.onrender.com/recipe/list/', {
             method: 'POST',
             headers: {
                 // "Content-Type": "application/json",
@@ -108,7 +108,7 @@ document.getElementById('recipe-form').addEventListener('submit', PostRecipe);
 const loadYourRecipes = () => {
     const user_id = getUserId()
     if(user_id){
-        fetch(`http://127.0.0.1:8000/recipe/list/?user=${user_id}`)
+        fetch(`https://recipesharingbackend-dpiy.onrender.com/recipe/list/?user=${user_id}`)
     .then((res) => res.json())
     .then((data) =>{
         console.log(data);
@@ -162,7 +162,7 @@ function deleteRecipe(recipeId) {
     
     // If the user confirms deletion, send a DELETE request to the server
     if (confirmation) {
-        fetch(`http://127.0.0.1:8000/recipe/list/${recipeId}`, {
+        fetch(`https://recipesharingbackend-dpiy.onrender.com/recipe/list/${recipeId}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
@@ -212,7 +212,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 const fetchRecipeData = (recipeId) => {
-    return fetch(`http://127.0.0.1:8000/recipe/list/${recipeId}`, {
+    return fetch(`https://recipesharingbackend-dpiy.onrender.com/recipe/list/${recipeId}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -253,7 +253,7 @@ const editSubmitRecipeData = (event, recipeId) => {
     formData.append('category', document.getElementById('Updatedcategory').value);
     formData.append('created', document.getElementById('Updateddatetime').value);
 
-    fetch(`http://127.0.0.1:8000/recipe/list/${recipeId}/`, {
+    fetch(`https://recipesharingbackend-dpiy.onrender.com/recipe/list/${recipeId}/`, {
         method: 'PUT',
         headers: {
             'X-CSRFToken': getCookie('csrftoken'),

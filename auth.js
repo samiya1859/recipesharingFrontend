@@ -50,7 +50,7 @@ const handleRegistration = (event) => {
     }
  
     // Send POST request to backend
-    fetch(`http://127.0.0.1:8000/user/register/`, {
+    fetch(`https://recipesharingbackend-dpiy.onrender.com/user/register/`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(registrationInfo),
@@ -88,7 +88,7 @@ const handleRegistration = (event) => {
     const password = getValue("login-password")
  
     if(username ,password){
-       fetch(`http://127.0.0.1:8000/user/login/`,{
+       fetch(`https://recipesharingbackend-dpiy.onrender.com/user/login/`,{
           method:"POST",
           headers:{"content-type":"application/json"},
           body:JSON.stringify({username,password}),
@@ -108,7 +108,7 @@ const handleRegistration = (event) => {
        });
  
     }else{
-       alert("Username or Password incorrect")
+       alert("Username or Password incorrect");
     }
  }
 
@@ -123,7 +123,7 @@ const handleRegistration = (event) => {
     
     const token = localStorage.getItem("token"); 
   
-    fetch("http://127.0.0.1:8000/user/logout/", {
+    fetch("https://recipesharingbackend-dpiy.onrender.com/user/logout/", {
       method: "POST",
       headers: {
         Authorization: `Token ${token}`,

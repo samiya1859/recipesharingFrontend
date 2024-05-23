@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 const fetchCommentData = (commentId) => {
     console.log(commentId);
-    return fetch(`http://127.0.0.1:8000/recipe/comment/${commentId}/`, {
+    return fetch(`https://recipesharingbackend-dpiy.onrender.com/recipe/comment/${commentId}/`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -62,7 +62,7 @@ const editSubmitCommentData = async (event, commentId) => {
     
     formData.append('created', document.getElementById('updateddatetime').value);
     
-    fetch(`http://127.0.0.1:8000/recipe/comment/${commentId}/`, {
+    fetch(`https://recipesharingbackend-dpiy.onrender.com/recipe/comment/${commentId}/`, {
         method: 'PUT',
         headers: {
             'X-CSRFToken': getCookie('csrftoken'),
