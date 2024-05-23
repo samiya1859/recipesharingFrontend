@@ -47,7 +47,7 @@
                 </ul>
                 <div class="icons" style="margin-right: 50px;">
                     <a id="profile" href="profile.html"><i class="ri-user-fill"></i></a>
-                    <a id="logout" href="#"><i class="ri-logout-circle-r-line"></i></a>
+                    <a onclick="handlelogOut()" id="logout" href="#"><i class="ri-logout-circle-r-line"></i></a>
                     <a id="login" href="login.html"><i class="ri-logout-circle-line"></i></a>
                 </div>
               </div>
@@ -62,7 +62,7 @@
     <div class="profile">
           <div class="profile-texts">
             <h1 style="font-weight: bold;">#WELCOME,</h1>
-            <span style="font-size: 20px; font-style: italic;">jsbsjbfb</span><br><br>
+            <span id="user-info" style="font-size: 20px; font-style: italic;"></span><br><br>
             <h3>Here you can see all of your posted recipes as well as you can post new recipe too...</h3><br>
             <h2>Update or delete your old recipes</h2>
           </div>
@@ -96,9 +96,9 @@
                 <select name="category" id="category">
                     <option value="1">Indian</option>
                     <option value="2">Bengali</option>
-                    <option value="3">Chinese</option>
-                    <option value="4">Italian</option>
-                    <option value="5">Fast Food</option>
+                    <option value="4">Chinese</option>
+                    <option value="5">Italian</option>
+                    <option value="6">Fast Food</option>
                 </select>
                 <input id="datetime" type="datetime-local" name="datetime" required>
                 <button type="submit" class="btn btn-success">Post Your Recipe</button>

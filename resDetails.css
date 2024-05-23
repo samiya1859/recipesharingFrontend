@@ -120,7 +120,7 @@ transition: all .4s ease;
     background: url('images/profilebg.jpg');
     background-size: cover;
     background-repeat: no-repeat;
-    height: 60vh;
+    height: auto;
 }
 .profile-texts{
     width: 60%;
@@ -175,4 +175,58 @@ transition: all .4s ease;
     box-shadow: 1px 1px 1px 1px black;
     padding: 30px 20px;
     margin-bottom: 10px;
+}
+
+
+/* responsive code */
+@media (max-width:600px){
+/* profile.html */
+.profile-texts{
+    width: 100%;
+    padding: 50px;
+    color: white;
+    gap: 10px;
+}
+.profile-texts h1{
+    font-weight: 600;
+    font-family:cursive;
+    font-size: 30px;
+}
+.profile-texts h2{
+    font-weight: 600;
+    font-family:cursive;
+    font-size: 25px;
+}
+.profile-texts h3{
+    font-weight: 600;
+    font-family:cursive;
+    font-size: 15px;
+}
+.recipe-form{
+    padding: 20px;
+    text-align: center;
+}
+.recipe-form form{
+    width: 100%;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.recipe-form form input{
+    border: none;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px 1px black;
+    padding: 30px 20px;
+    margin-bottom: 10px;
+}
+
+/* recipedetails.html */
+.comment-form form{
+    width: 100%;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
 }

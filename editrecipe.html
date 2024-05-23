@@ -47,7 +47,7 @@
                 </ul>
                 <div class="icons" style="margin-right: 50px;">
                     <a id="profile" href="profile.html"><i class="ri-user-fill"></i></a>
-                    <a onclick="handlelogOut()" id="logout" href="#"><i class="ri-logout-circle-r-line"></i></a>
+                    <a id="logout" href="#"><i class="ri-logout-circle-r-line"></i></a>
                     <a id="login" href="login.html"><i class="ri-logout-circle-line"></i></a>
                 </div>
               </div>
@@ -58,34 +58,35 @@
 
 
 
-   
 
-<!-- comment form section -->
+<!-- Add new recipe -->
 <section>
-    <div class="comment-sect p-5">
-        <h3>Edit your comment on this recipe</h3>
-        <div class="comment-form">
-            <form id="updated-comment-form" action="" enctype="multipart/form-data">
-                <input type="number" name="" id="updaterecipeId" placeholder="Enter recipe id from top">
-                <input id="updatedcomment" type="text" placeholder="Write about this recipe">
-        
-                
-                    <select id="updatedrating" name="rating" required>
-                        <option value="⭐">⭐</option>
-                        <option value="⭐⭐">⭐⭐</option>
-                        <option value="⭐⭐⭐">⭐⭐⭐</option>
-                        <option value="⭐⭐⭐⭐">⭐⭐⭐⭐</option>
-                        <option value="⭐⭐⭐⭐⭐">⭐⭐⭐⭐⭐</option>
-                    </select>
-                    <input id="updateddatetime" type="datetime-local" name="datetime" required>
-                <button type="submit" class="btn btn-success">Post Comment</button>
+    <div class="add-recipe p-5">
+        <h1>Update your recipe</h1>
+        <div id="recipe-form" class="recipe-form">
+            <form id="updated-recipe-form" enctype="multipart/form-data">
+                <input type="text" name="recipeName" id="UpdatedrecipeName" placeholder="Enter your recipe name" required>
+                <input type="text" name="ingredients" id="Updatedingredients" placeholder="Enter ingredients" required>
+                <input type="text" name="procedure" id="Updatedprocedure" placeholder="Write procedure" required>
+                <input type="file" name="image" id="Updatedimage" accept="image/*">
+                <label for="category"></label>
+                <select name="category" id="Updatedcategory">
+                    <option value="1">Indian</option>
+                    <option value="2">Bengali</option>
+                    <option value="4">Chinese</option>
+                    <option value="5">Italian</option>
+                    <option value="6">Fast Food</option>
+                </select>
+                <input id="Updateddatetime" type="datetime-local" name="datetime" required>
+                <button type="submit" class="btn btn-success">Post Your Updated Recipe</button>
             </form>
         </div>
+        
     </div>
 </section>
 
 
- <!-- footer design -->
+ <!-- footer -->
  <footer>
     <div class="footer " style="background: rgb(2, 56, 56);">
         <div class="row d-flex">
@@ -122,8 +123,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiffy-slider@1.6.0/dist/js/swiffy-slider.min.js" crossorigin="anonymous" defer></script>
 <script src="auth.js"></script>
-<script src="recipedetails.js"></script>
-<script src="usersreview.js"></script>
+<script src="profile.js"></script>
 
 </body>
 </html>

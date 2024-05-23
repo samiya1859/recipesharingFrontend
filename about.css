@@ -1,0 +1,156 @@
+.about-sec{
+    text-align: center;
+    color: white;
+    padding-top: 80px;
+}
+.about-sec h1 {
+    font-family: cursive;
+    font-weight: bolder;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); 
+}
+.image-sec{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 50px;
+    gap: 20px;
+}
+.img1 img{
+  width: 100px;
+  animation-name: goinguptodown;
+  animation-duration: 5s;
+  animation-iteration-count:infinite ;
+ 
+}
+.img2 img{
+    width: 100px;
+    animation-name: goingdowntoup;
+  animation-duration: 5s;
+  animation-iteration-count:infinite ;
+ 
+}
+
+@keyframes goinguptodown {
+    0% {
+        transform: translateY(0); 
+    }
+    25% {
+        transform: translateY(50px); 
+    }
+    50% {
+        transform: translateY(-50px); 
+    }
+    100%{
+        transform: translateY(0);
+    }
+}
+
+@keyframes goingdowntoup {
+    0% {
+        transform: translateY(0);
+    }
+    25% {
+        transform: translateY(-50px); 
+    }
+    50% {
+        transform: translateY(50px); 
+    }
+    100%{
+        transform: translateY(0);
+    }
+}
+.services{
+    display: grid;
+    grid-template-columns: repeat(auto,minmax(200px,auto-fit));
+}
+
+/* contact html */
+.index-sec{
+    height: auto;
+    justify-content: center;
+    padding: 30px;
+    color: white;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+}
+.contact-text{
+    align-items: center;
+    padding-top: 70px;
+}
+.contact-form{
+    width: 70%;
+    justify-content: center;
+}
+.contact-form form{
+    width: 60%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.contact-form form input{
+    border: none;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px 1px black;
+    padding: 20px 10px;
+    margin-bottom: 10px;
+}
+
+
+/* responsive */
+@media (max-width:600px){
+/* about page */
+    .about-sec h1 {
+     font-family: cursive;
+     font-weight: 600;
+     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8); 
+    }
+    .img1 img{
+     width: 50px;
+     animation-name: goinguptodown;
+     animation-duration: 5s;
+     animation-iteration-count:infinite ;
+    
+    }
+    .img2 img{
+        width: 50px;
+        animation-name: goingdowntoup;
+      animation-duration: 5s;
+      animation-iteration-count:infinite ;
+     
+    }    
+/* contact page responsive */
+.index-sec{
+    height: auto;
+    justify-content: center;
+    padding: 30px;
+    color: white;
+    display: flex;
+    flex-direction: column-reverse;
+    text-align: center;
+}
+.contact-text{
+    align-items: center;
+    padding-top: 50px;
+}
+.contact-form{
+    width: 100%;
+    justify-content: center;
+}
+.contact-form form{
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.contact-form form input{
+    border: none;
+    border-radius: 5px;
+    box-shadow: 1px 1px 1px 1px black;
+    padding: 20px 10px;
+    margin-bottom: 10px;
+}
+
+}

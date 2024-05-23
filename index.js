@@ -27,7 +27,7 @@ const displayCategories = (categories) => {
         const div = document.createElement('div');
         div.classList.add('category-list');
         div.innerHTML = `
-            <a href="#">${category.category}</a>
+            <button>${category.category}</button>
         `;
         parent.appendChild(div);
     });

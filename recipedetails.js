@@ -58,26 +58,32 @@ const displayAllcomments = (comments) => {
     }
 
     parent.innerHTML = "";
-
-    comments.forEach((comment) => {
-        const div = document.createElement("div");
-        div.classList.add("slide-visible");
-        div.innerHTML = `
-        <h5>Commented by Userid - ${comment.commentor}</h5>
-        <h6>Commented on - ${comment.created}</h6>
-        <span>${comment.comment}</span>
-        <h5>${comment.rating}</h5>
     
-        `;
-        parent.appendChild(div);
-
-    });
+    if(comments.length>0){
+        comments.forEach((comment) => {
+            const div = document.createElement("div");
+            div.classList.add("slide-visible");
+            div.innerHTML = `
+            <h5>Commented by Userid - ${comment.commentor}</h5>
+            <h6>Commented on - ${comment.created}</h6>
+            <span>${comment.comment}</span>
+            <h5>${comment.rating}</h5>
+        
+            `;
+            parent.appendChild(div);
+    
+        });
+    } else{
+            const div = document.createElement("div");
+            div.classList.add("slide-visible");
+            div.innerHTML = `
+            <h2>This recipe has no comments</h2>
+            `;
+            parent.appendChild(div);
+    
+    }
+    
 }
-
-
-
-
-
 
 
 const getUserId = () => {
@@ -96,50 +102,53 @@ const PostComment = async (event) => {
     event.preventDefault();
 
     const commentor = getUserId();
-    const recipe = document.getElementById("recipeId").value;
-    const comment = document.getElementById("comment").value;
-    const created = document.getElementById("datetime").value;
-    const rating = document.getElementById("rating").value; 
-
-    const alreadyReviewed = await isReviewed(recipe, commentor);
-    if (alreadyReviewed) {
-        alert("You have already commented on this recipe. Now you can edit or delete it.");
-        return;
-    }
-
-    const commentInfo = {
-        commentor,
-        recipe,
-        comment,
-        created,
-        rating
-    };
-
-    fetch(`http://127.0.0.1:8000/recipe/comment/`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(commentInfo),
-    })
-    .then((res) => {
-        if (!res.ok) {
-            return res.text().then(text => { throw new Error(text) });
+    if(commentor){
+        const recipe = document.getElementById("recipeId").value;
+        const comment = document.getElementById("comment").value;
+        const created = document.getElementById("datetime").value;
+        const rating = document.getElementById("rating").value; 
+    
+        const alreadyReviewed = await isReviewed(recipe, commentor);
+        if (alreadyReviewed) {
+            alert("You have already commented on this recipe. Now you can edit or delete it.");
+            return;
         }
-        return res.json();
-    })
-    .then((data) => {
-        console.log(data);
-        alert("Added comment on this recipe Successfully");
-    })
-    .catch((error) => {
-        console.error("Error:", error.message);
-        alert("Comment failed!");
-    });
+    
+        const commentInfo = {
+            commentor,
+            recipe,
+            comment,
+            created,
+            rating
+        };
+    
+        fetch(`http://127.0.0.1:8000/recipe/comment/`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(commentInfo),
+        })
+        .then((res) => {
+            if (!res.ok) {
+                return res.text().then(text => { throw new Error(text) });
+            }
+            return res.json();
+        })
+        .then((data) => {
+            console.log(data);
+            alert("Added comment on this recipe Successfully");
+        })
+        .catch((error) => {
+            console.error("Error:", error.message);
+            alert("Comment failed!");
+        });
+    } else{
+        alert("You can not add comment. Log in first");
+        console.error("Log in required");
+    }
+    
 };
 
 document.getElementById('comment-form').addEventListener('submit', PostComment);
-
-
-
 
 const isReviewed = async (recipeId, userId) => {
     try {
@@ -173,53 +182,71 @@ const displayAllYourcomments = (comments) => {
     }
 
     parent.innerHTML = ""; 
-
-    comments.forEach((comment) => {
-        const div = document.createElement("div");
-        div.classList.add("card")
-        div.innerHTML = `
-        <h6>${comment.comment}</h6>
-        <p>${comment.rating}</p>
-        <span>${comment.created}</span>
-        <div class="com-buttons d-flex gap-2">
-            <a href="#">Edit</a>
-            <a onclick="deletecomment(${comment.id})" href="#">Delete</a>
-        </div>
-        `;
-        parent.appendChild(div);
-    })
+    if(comments.length>0){
+        comments.forEach((comment) => {
+            const div = document.createElement("div");
+            div.classList.add("card")
+            div.innerHTML = `
+            <h6>${comment.comment}</h6>
+            <p>${comment.rating}</p>
+            <span>${comment.created}</span>
+            <div class="com-buttons d-flex gap-2">
+                <a href="usersreviews.html?commentId=${comment.id}">Edit</a>
+                <a onclick="deletecomment(${comment.id})" href="#">Delete</a>
+            </div>
+            `;
+            parent.appendChild(div);
+        })
+    }else{
+            const div = document.createElement("div");
+            div.classList.add("card")
+            div.innerHTML = `
+            <h2>You have no comment on this recipe yet.</h2>
+            `;
+            parent.appendChild(div);
+    }
+    
 }
 
 
 // deleting commet
 function deletecomment(commentId) {
-
-    const confirmation = confirm("Are you sure you want to delete this comment?");
+    const user = getUserId();
+    if (user){
+        const confirmation = confirm("Are you sure you want to delete this comment?");
     
-    // If the user confirms deletion, send a DELETE request to the server
-    if (confirmation) {
-        fetch(`http://127.0.0.1:8000/recipe/comment/${commentId}`, {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json',
+        // If the user confirms deletion, send a DELETE request to the server
+        if (confirmation) {
+            fetch(`http://127.0.0.1:8000/recipe/comment/${commentId}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    
+                },
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Failed to delete review');
+                }
+    
+                console.log('Review deleted successfully');
+                alert("Review deleted successfully")
                 
-            },
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Failed to delete review');
-            }
-
-            console.log('Review deleted successfully');
-            alert("Review deleted successfully")
-            
-        })
-        .catch(error => {
-            console.error('Error deleting review:', error);
-            
-        });
+            })
+            .catch(error => {
+                console.error('Error deleting review:', error);
+                
+            });
+        }
+    } else{
+        alert("Login required!");
     }
+
+    
 }
+
+
+
 
 
 
@@ -245,15 +272,21 @@ const getparams = () => {
     })
     
     const user_id = getUserId()
-    fetch(`http://127.0.0.1:8000/recipe/comment/?commentor=${user_id}&recipe=${params}`)
-    .then((res) => res.json())
-    .then((data) => {
-        console.log(data);
-        if (Array.isArray(data.results)) {
-            displayAllYourcomments(data.results);
-        } else {
-            console.error('Expected an array in data.results but got:', data);
-        }
-    })
+    if(user_id){
+        fetch(`http://127.0.0.1:8000/recipe/comment/?commentor=${user_id}&recipe=${params}`)
+        .then((res) => res.json())
+        .then((data) => {
+            console.log(data);
+            if (Array.isArray(data.results)) {
+                displayAllYourcomments(data.results);
+            } else {
+                console.error('Expected an array in data.results but got:', data);
+            }
+        })
+    }else{
+        alert("Log in to see all of your comments");
+    }
+    
+
 }
 getparams();

@@ -113,7 +113,15 @@ const handleRegistration = (event) => {
  }
 
  const handlelogOut = () => {
-    const token = localStorage.getItem("token");
+    localStorage.removeItem("token");
+    localStorage.removeItem("user_id");
+    alert("Logged out Successfully!");
+  
+    // Redirect to index.html
+    window.location.href = "index.html";
+  
+    
+    const token = localStorage.getItem("token"); 
   
     fetch("http://127.0.0.1:8000/user/logout/", {
       method: "POST",
@@ -125,9 +133,10 @@ const handleRegistration = (event) => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        localStorage.removeItem("token");
-        localStorage.removeItem("user_id");
-        alert("Logged out Successfully!");
-        // window.location.reload("")
+        
+      })
+      .catch((error) => {
+        console.error("Error during logout:", error);
       });
   };
+  
